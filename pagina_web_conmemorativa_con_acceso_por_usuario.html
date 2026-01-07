@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Página Conmemorativa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { font-family: Arial, sans-serif; background:#f4f4f4; margin:0; }
+    header { background:#2c2c2c; color:white; padding:20px; text-align:center; }
+    .container { max-width:900px; margin:auto; padding:20px; }
+    .login, .memorial { background:white; padding:20px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+    .memorial { display:none; }
+    input { width:100%; padding:10px; margin:10px 0; }
+    button { padding:10px 20px; background:#444; color:white; border:none; cursor:pointer; }
+    .gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; margin-top:20px; }
+    .gallery img { width:100%; border-radius:6px; }
+    footer { text-align:center; padding:15px; color:#666; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>En Memoria de</h1>
+  <h2>Nombre del Ser Querido</h2>
+</header>
+
+<div class="container">
+
+  <!-- LOGIN -->
+  <div class="login" id="login">
+    <h3>Acceso privado</h3>
+    <p>Ingresa tu usuario para ver recuerdos y fotografías.</p>
+    <input type="text" id="user" placeholder="Usuario" />
+    <input type="password" id="pass" placeholder="Contraseña" />
+    <button onclick="login()">Ingresar</button>
+  </div>
+
+  <!-- CONTENIDO MEMORIAL -->
+  <div class="memorial" id="memorial">
+    <h3>Recuerdos</h3>
+    <p>Aquí puedes colocar un mensaje conmemorativo, historia de vida, frases, etc.</p>
+
+    <div class="gallery">
+      <img src="https://via.placeholder.com/300" alt="foto" />
+      <img src="https://via.placeholder.com/300" alt="foto" />
+      <img src="https://via.placeholder.com/300" alt="foto" />
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Página conmemorativa privada
+</footer>
+
+<script>
+  // USUARIO Y CONTRASEÑA DE EJEMPLO
+  const USER = "familia";
+  const PASS = "recuerdo";
+
+  function login() {
+    const u = document.getElementById('user').value;
+    const p = document.getElementById('pass').value;
+
+    if (u === USER && p === PASS) {
+      document.getElementById('login').style.display = 'none';
+      document.getElementById('memorial').style.display = 'block';
+    } else {
+      alert('Usuario o contraseña incorrectos');
+    }
+  }
+</script>
+
+</body>
+</html>
