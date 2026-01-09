@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cuidado Eterno – Memoriales Digitales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { font-family: Arial, sans-serif; background:#f4f4f4; margin:0; }
+    header { background:#2c2c2c; color:white; padding:30px; text-align:center; }
+    nav { background:#444; padding:10px; text-align:center; }
+    nav a { color:white; margin:0 15px; text-decoration:none; font-weight:bold; }
+    .container { max-width:1100px; margin:auto; padding:20px; }
+    section { background:white; padding:25px; margin-bottom:20px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+    h2 { color:#333; }
+    input, select { width:100%; padding:10px; margin:10px 0; }
+    button { padding:10px 20px; background:#2c2c2c; color:white; border:none; cursor:pointer; border-radius:5px; }
+    .gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; margin-top:20px; }
+    .gallery img { width:100%; border-radius:6px; }
+    .hidden { display:none; }
+    footer { text-align:center; padding:20px; color:#666; }
+    .plan { border:1px solid #ccc; padding:15px; border-radius:8px; margin-bottom:15px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Cuidado Eterno</h1>
+  <p>Tu recuerdo vivirá por siempre</p>
+</header>
+
+<nav>
+  <a href="#servicios">Servicios</a>
+  <a href="#planes">Membresías</a>
+  <a href="#acceso">Acceso Familias</a>
+  <a href="#contacto">Contacto</a>
+  <a href="https://wa.me/569XXXXXXXX" target="_blank">WhatsApp</a>
+</nav>
+
+<div class="container">
+
+<section id="servicios">
+  <h2>Nuestros Servicios</h2>
+  <ul>
+    <li>Limpieza y mantención de tumbas</li>
+    <li>Decoración floral con respeto y cuidado</li>
+    <li>Memorial digital privado con QR</li>
+    <li>Galería de fotos y mensajes conmemorativos</li>
+  </ul>
+</section>
+
+<section id="planes">
+  <h2>Planes y Membresías</h2>
+  <div class="plan"><strong>Plan Básico</strong><br>Memorial digital + QR<br>1 galería de fotos</div>
+  <div class="plan"><strong>Plan Anual</strong><br>Limpieza mensual + memorial<br>Soporte continuo</div>
+  <div class="plan"><strong>Plan Premium</strong><br>Mantención completa + memorial exclusivo<br>Gestión total</div>
+</section>
+
+<section id="acceso">
+  <h2>Acceso Privado</h2>
+  <input id="user" placeholder="Usuario" />
+  <input id="pass" type="password" placeholder="Contraseña" />
+  <button onclick="login()">Ingresar</button>
+</section>
+
+<section id="memorial" class="hidden">
+  <h2 id="nombre"></h2>
+  <p id="mensaje"></p>
+  <div class="gallery">
+    <img src="https://via.placeholder.com/300" />
+    <img src="https://via.placeholder.com/300" />
+  </div>
+  <p><strong>QR del memorial:</strong></p>
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cuidadoeterno.cl/memorial/familia1" />
+</section>
+
+<section id="admin" class="hidden">
+  <h2>Panel Administradora</h2>
+  <ul>
+    <li>📁 Carpetas por cliente</li>
+    <li>📅 Fechas, contratos y renovaciones</li>
+    <li>🧾 Declaraciones juradas</li>
+    <li>📸 Subida de imágenes</li>
+    <li>📝 Requerimientos especiales</li>
+  </ul>
+</section>
+
+<section id="contacto">
+  <h2>Contacto</h2>
+  <p>Atención directa por WhatsApp</p>
+  <a href="https://wa.me/56945910998" target="_blank"><button>💬 Contactar</button></a>
+  <p><strong>Ubicación:</strong> La Ligua</p>
+</section>
+
+</div>
+
+<footer>
+  © Cuidado Eterno – Memoriales digitales con respeto y amor
+</footer>
+
+<script>
+  const USUARIOS = {
+    familia1: { pass: '1234', nombre: 'María González', mensaje: 'Tu recuerdo vivirá por siempre', rol: 'cliente' },
+    admin: { pass: 'admin123', rol: 'admin' }
+  };
+
+  function login() {
+    const u = user.value;
+    const p = pass.value;
+
+    if (!USUARIOS[u] || USUARIOS[u].pass !== p) {
+      alert('Acceso incorrecto');
+      return;
+    }
+
+    document.getElementById('acceso').classList.add('hidden');
+
+    if (USUARIOS[u].rol === 'admin') {
+      document.getElementById('admin').classList.remove('hidden');
+    } else {
+      document.getElementById('memorial').classList.remove('hidden');
+      document.getElementById('nombre').innerText = USUARIOS[u].nombre;
+      document.getElementById('mensaje').innerText = USUARIOS[u].mensaje;
+    }
+  }
+</script>
+
+</body>
+</html>
+
